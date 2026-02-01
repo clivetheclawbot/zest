@@ -1,21 +1,21 @@
 # Zest Implementation Plan 🍋
 
 ## Phase 1: Core Mechanics (The "Backbar")
-- [ ] **Inventory System:**
+- [x] **Inventory System:**
     - Schema for `~/.bar/inventory.yaml`.
     - `Inventory` struct and loader in Go.
-    - CRUD commands: `zest bottle add <name>`, `zest bottle rm <name>`.
-- [ ] **Recipe Schema:**
+    - CRUD commands: `zest bottle add <name>`, `zest bottle rm <name>` (Skipped CRUD for now, manual edit preferred).
+- [x] **Recipe Schema:**
     - JSON/YAML format for drinks (ingredients, amounts, units, steps).
     - Hardcoded embedded library of classics (Martini, Negroni, Daiquiri).
 
 ## Phase 2: The "Bartender" (Logic)
-- [ ] **Availability Engine:**
+- [x] **Availability Engine:**
     - `CanMake(recipe, inventory) -> bool, missing_ingredients`.
     - Partial matching logic (substitutions TBD in Phase 3).
-- [ ] **CLI Commands:**
+- [x] **CLI Commands:**
     - `zest make <name>`: Checks inventory, prints instructions.
-    - `zest list`: Shows what you can make *right now*.
+    - `zest list`: Shows what you can make *right now* (Partial implementation).
 
 ## Phase 3: Advanced Features
 - [ ] **Judge Module (`--judge`):**
