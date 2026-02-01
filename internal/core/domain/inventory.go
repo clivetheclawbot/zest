@@ -1,11 +1,6 @@
-package main
+package domain
 
-import (
-	"fmt"
-	"os"
-
-	"gopkg.in/yaml.v3"
-)
+import "fmt"
 
 // Item represents a single bottle or ingredient in the bar.
 type Item struct {
@@ -17,22 +12,6 @@ type Item struct {
 // Inventory represents the collection of items available.
 type Inventory struct {
 	Items []Item `yaml:"items"`
-}
-
-// LoadInventory reads a YAML file and returns the Inventory struct.
-func LoadInventory(path string) (*Inventory, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, err
-	}
-
-	var inv Inventory
-	err = yaml.Unmarshal(data, &inv)
-	if err != nil {
-		return nil, err
-	}
-
-	return &inv, nil
 }
 
 // Stats returns a summary of the inventory.
