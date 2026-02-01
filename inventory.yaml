@@ -1,0 +1,105 @@
+items:
+  # Spirits
+  - name: Havana Club 3
+    category: spirit
+    tags: [rum, light_rum, cuban]
+  - name: Plantation 3 Stars
+    category: spirit
+    tags: [rum, light_rum]
+  - name: Plantation O.F.T.D.
+    category: spirit
+    tags: [rum, overproof_rum]
+  - name: Smirnoff Blue
+    category: spirit
+    tags: [vodka, export_strength]
+  - name: London Dry Gin
+    category: spirit
+    tags: [gin, london_dry]
+  - name: Tequila (Blanco)
+    category: spirit
+    tags: [tequila]
+  - name: Mezcal
+    category: spirit
+    tags: [mezcal]
+  - name: Bulleit Bourbon
+    category: spirit
+    tags: [whiskey, bourbon, high_rye]
+  - name: Scotch (Swanky)
+    category: spirit
+    tags: [whiskey, scotch]
+  - name: Brandy (Cheap)
+    category: spirit
+    tags: [brandy]
+
+  # Liqueurs & Modifiers
+  - name: Sweet Vermouth
+    category: modifier
+    tags: [vermouth, sweet]
+  - name: Dry Vermouth
+    category: modifier
+    tags: [vermouth, dry]
+  - name: Campari
+    category: liqueur
+    tags: [amaro, red_bitter]
+  - name: Triple Sec
+    category: liqueur
+    tags: [orange_liqueur]
+  - name: Averna
+    category: liqueur
+    tags: [amaro]
+  - name: Fernet-Branca
+    category: liqueur
+    tags: [amaro, fernet]
+  - name: Licor 43
+    category: liqueur
+    tags: [vanilla_liqueur]
+  - name: Yellow Chartreuse
+    category: liqueur
+    tags: [herbal_liqueur]
+  - name: Maraschino
+    category: liqueur
+    tags: [cherry_liqueur]
+  - name: Baileys
+    category: liqueur
+    tags: [cream_liqueur]
+  - name: Caramel Vodka
+    category: liqueur
+    tags: [flavored_vodka] # Judge: suspicious
+  - name: Ronmiel
+    category: liqueur
+    tags: [honey_rum]
+
+  # Mixers & Pantry
+  - name: Lemon Super Juice
+    category: mixer
+    tags: [citrus, lemon]
+  - name: Lime Super Juice
+    category: mixer
+    tags: [citrus, lime]
+  - name: Sugar Syrup
+    category: syrup
+    tags: [simple_syrup]
+  - name: Maple Syrup
+    category: syrup
+    tags: [sweetener]
+  - name: Grenadine
+    category: syrup
+    tags: [pomegranate]
+  - name: Angostura Bitters
+    category: bitters
+    tags: [aromatic]
+  - name: Saline Solution
+    category: enhancer
+    tags: [salt]
+  - name: MSG
+    category: enhancer
+    tags: [umami]
+  - name: Soda Water
+    category: mixer
+    tags: [carbonated]
+  - name: Tonic Water
+    category: mixer
+    tags: [carbonated]
+  - name: Ice (Good)
+    category: ice
+    tags: []

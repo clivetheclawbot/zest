@@ -15,8 +15,27 @@ func main() {
 
 	switch command {
 	case "status":
+		inv, err := LoadInventory("inventory.yaml")
+		if err != nil {
+			fmt.Printf("Error loading inventory: %v\n", err)
+			fmt.Println("Tip: Create 'inventory.yaml' or run 'zest init'")
+			os.Exit(1)
+		}
 		fmt.Println("🍋 zest v0.0.1")
-		fmt.Println("Bar inventory: 0 bottles. Go shopping.")
+		fmt.Println(inv.Stats())
+		// Basic listing for now
+		if len(inv.Items) > 0 {
+			fmt.Println("\nTop Shelf:")
+			for i, item := range inv.Items {
+				if i >= 5 {
+					break
+				}
+				fmt.Printf("- %s (%s)\n", item.Name, item.Category)
+			}
+			if len(inv.Items) > 5 {
+				fmt.Printf("...and %d more.\n", len(inv.Items)-5)
+			}
+		}
 	case "make":
 		if len(os.Args) < 3 {
 			fmt.Println("Error: What are we making? Usage: zest make <drink>")
