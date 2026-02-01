@@ -23,6 +23,7 @@ func main() {
 	// Services (Application Logic)
 	bartender := services.NewBartenderService(inventoryRepo, recipeRepo)
 	judge := services.NewJudgeService()
+	shopper := services.NewShoppingService(inventoryRepo, recipeRepo)
 
 	command := os.Args[1]
 
@@ -88,6 +89,29 @@ func main() {
 			fmt.Printf("%d. %s\n", i+1, step)
 		}
 
+	case "shop":
+		recs, err := shopper.GetRecommendations()
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		fmt.Println("🛍️  Zest Shopping List Optimizer")
+		fmt.Println("--------------------------------")
+		if len(recs) == 0 {
+			fmt.Println("You have everything needed for all known recipes! (Or no recipes loaded)")
+		} else {
+			count := 0
+			for _, r := range recs {
+				// Filter out noisy low-value recs if list is long
+				if count >= 5 {
+					break
+				}
+				fmt.Printf("👉 Buy %-20s -> Unlocks %d recipes: %v\n", r.Ingredient, r.UnlockCount, r.UnlockList)
+				count++
+			}
+		}
+
 	case "help":
 		printHelp()
 	default:
@@ -103,5 +127,6 @@ func printHelp() {
 	fmt.Println("Usage:")
 	fmt.Println("  zest status    Check your bar inventory")
 	fmt.Println("  zest make      Attempt to mix a drink")
+	fmt.Println("  zest shop      See what bottles to buy next")
 	fmt.Println("  zest help      Show this help")
 }
