@@ -45,8 +45,21 @@ func main() {
 		if drink == "vodka redbull" {
 			panic("clive: absolutely not. runtime error: bad taste detected")
 		}
-		fmt.Printf("Searching memory for '%s'...\n", drink)
-		fmt.Println("Error: Recipe database empty. Please implement inventory.yaml.")
+
+		recipes, err := LoadRecipes("recipes.json")
+		if err != nil {
+			fmt.Printf("Error loading recipes: %v\n", err)
+			os.Exit(1)
+		}
+
+		recipe := recipes.FindRecipe(drink)
+		if recipe == nil {
+			fmt.Printf("Error: I don't know how to make a '%s'. Check your spelling or open a PR.\n", drink)
+			os.Exit(1)
+		}
+
+		// TODO: Check inventory availability
+		recipe.PrintPretty()
 	case "help":
 		printHelp()
 	default:
