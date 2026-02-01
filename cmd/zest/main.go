@@ -22,6 +22,7 @@ func main() {
 
 	// Services (Application Logic)
 	bartender := services.NewBartenderService(inventoryRepo, recipeRepo)
+	judge := services.NewJudgeService()
 
 	command := os.Args[1]
 
@@ -35,6 +36,10 @@ func main() {
 		}
 		fmt.Println("🍋 zest v0.0.1")
 		fmt.Println(stats)
+		
+		// The Judge Speaks
+		fmt.Printf("\n⚖️  Clive's Ruling: %s\n", judge.JudgeSession())
+
 		if len(topShelf) > 0 {
 			fmt.Println("\nTop Shelf:")
 			for _, item := range topShelf {
