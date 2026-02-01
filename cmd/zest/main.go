@@ -48,7 +48,7 @@ func main() {
 			os.Exit(1)
 		}
 		drink := os.Args[2]
-		recipe, err := bartender.MakeDrink(drink)
+		recipe, missing, err := bartender.MakeDrink(drink)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
@@ -57,6 +57,8 @@ func main() {
 		// Presentation Logic (View)
 		fmt.Printf("🍸 %s\n", recipe.Name)
 		fmt.Println(strings.Repeat("-", len(recipe.Name)+3))
+
+		// Ingredients
 		for _, ing := range recipe.Ingredients {
 			target := ing.Name
 			if target == "" {
@@ -64,6 +66,18 @@ func main() {
 			}
 			fmt.Printf("• %.1f %s %s\n", ing.Amount, ing.Unit, target)
 		}
+
+		// Status Check
+		if len(missing) > 0 {
+			fmt.Println("\n❌ Missing Ingredients:")
+			for _, m := range missing {
+				fmt.Printf("  - %s\n", m)
+			}
+			fmt.Println("\nCannot make this drink. Go shopping.")
+			os.Exit(1)
+		}
+
+		fmt.Println("\n✅ All ingredients available!")
 		fmt.Println("\nInstructions:")
 		for i, step := range recipe.Instructions {
 			fmt.Printf("%d. %s\n", i+1, step)

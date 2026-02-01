@@ -14,6 +14,25 @@ type Inventory struct {
 	Items []Item `yaml:"items"`
 }
 
+// Has checks if the inventory contains an item by exact name or matching tag.
+func (i *Inventory) Has(name, tag string) bool {
+	for _, item := range i.Items {
+		// 1. Exact Name Match
+		if name != "" && item.Name == name {
+			return true
+		}
+		// 2. Tag Match
+		if tag != "" {
+			for _, t := range item.Tags {
+				if t == tag {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
 // Stats returns a summary of the inventory.
 func (i *Inventory) Stats() string {
 	counts := make(map[string]int)
